@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Recommendation Chatbot</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef2f3;
+            text-align: center;
+            padding-top: 40px;
+        }
+        .chatbox {
+            background: white;
+            width: 450px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        select, input, button {
+            padding: 10px;
+            width: 90%;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chatbox">
+    <h2>🤖 Smart Recommendation Chatbot</h2>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter your name" required>
+
+        <select name="genre" required>
+            <option value="">Select your interest</option>
+            <option>Action</option>
+            <option>Romance</option>
+            <option>Sci-Fi</option>
+            <option>Motivation</option>
+        </select>
+
+        <button type="submit">Recommend</button>
+    </form>
+
+    {% if result %}
+        <h3>🎬 Movies</h3>
+        <ul>
+            {% for movie in result.movies %}
+                <li>{{ movie }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>📚 Books</h3>
+        <ul>
+            {% for book in result.books %}
+                <li>{{ book }}</li>
+            {% endfor %}
+        </ul>
+
+        <h4>🕘 Your Previous Interests</h4>
+        <p>{{ history }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
